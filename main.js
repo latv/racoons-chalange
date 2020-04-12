@@ -22,8 +22,16 @@ function draw() {
 }
 
 function showCoords(event) {
-var x = event.clientX - 10;
-var y = event.clientY - 10;
+  var x = parseInt(event.clientX/10);
+  var y =parseInt(event.clientY/10);
+console.log('x: ',x,"y: ",y);
+var canvas = document.getElementById('canvas');
+if (canvas.getContext) {
+  var context = canvas.getContext('2d');
+}
+
+context.rect(x*10, y*10, 10, 10);
+context.stroke();
 var coords = "X coordinates: " + x + ", Y coordinates: " + y;
 document.getElementById('showCoords').innerHTML = coords;
 
